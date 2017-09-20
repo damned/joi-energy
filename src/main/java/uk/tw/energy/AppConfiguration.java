@@ -49,14 +49,22 @@ public class AppConfiguration {
     }
 
     private Map<String, List<ElectricityReading>> generateMeterElectricityReadings() {
-        List<String> meterIds = Arrays.asList(SARAHS_SMART_METER_ID, PETERS_SMART_METER_ID, CHARLIES_SMART_METER_ID,
-                ANDREAS_SMART_METER_ID, ALEXS_SMART_METER_ID);
-
         Map<String, List<ElectricityReading>> readings = new HashMap<>();
         ElectricityReadingsGenerator electricityReadingsGenerator = new ElectricityReadingsGenerator();
-        meterIds.forEach(meterId -> readings.put(meterId, electricityReadingsGenerator.generate(20)));
-
+        Set<String> smartMeterIds = smartMeterToPricePlanAccounts().keySet();
+        smartMeterIds.forEach(smartMeterId -> readings.put(smartMeterId, electricityReadingsGenerator.generate(20)));
         return readings;
+    }
+
+    @Bean
+    public Map<String, String> smartMeterToPricePlanAccounts() {
+        Map<String, String> smartMeterToPricePlanAccounts = new HashMap<>();
+        smartMeterToPricePlanAccounts.put(SARAHS_SMART_METER_ID, MOST_EVIL_PRICE_PLAN_ID);
+        smartMeterToPricePlanAccounts.put(PETERS_SMART_METER_ID, RENEWABLES_PRICE_PLAN_ID);
+        smartMeterToPricePlanAccounts.put(CHARLIES_SMART_METER_ID, MOST_EVIL_PRICE_PLAN_ID);
+        smartMeterToPricePlanAccounts.put(ANDREAS_SMART_METER_ID, STANDARD_PRICE_PLAN_ID);
+        smartMeterToPricePlanAccounts.put(ALEXS_SMART_METER_ID, RENEWABLES_PRICE_PLAN_ID);
+        return smartMeterToPricePlanAccounts;
     }
 
     @Bean
@@ -64,7 +72,6 @@ public class AppConfiguration {
     public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
         ObjectMapper objectMapper = builder.createXmlMapper(false).build();
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-
         return objectMapper;
     }
 }

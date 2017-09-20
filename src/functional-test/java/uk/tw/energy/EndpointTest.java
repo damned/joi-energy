@@ -29,10 +29,10 @@ public class EndpointTest {
 
     @Test
     public void shouldCalculateAllPrices() throws JsonProcessingException {
-        String meterId = "bob";
-        populateMeterReadingsForMeter(meterId);
+        String smartMeterId = "bob";
+        populateMeterReadingsForMeter(smartMeterId);
 
-        ResponseEntity<String> response = restTemplate.getForEntity("/price-plans/compare-all/" + meterId, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("/price-plans/compare-all/" + smartMeterId, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -48,17 +48,17 @@ public class EndpointTest {
     }
 
     @Test
-    public void givenMeterIdShouldReturnAMeterReadingAssociatedWithMeterId() throws JsonProcessingException {
-        String meterId = "bob";
-        populateMeterReadingsForMeter(meterId);
+    public void givenMeterIdShouldReturnAMeterReadingAssociatedWithSmartMeterId() throws JsonProcessingException {
+        String smartMeterId = "bob";
+        populateMeterReadingsForMeter(smartMeterId);
 
-        ResponseEntity<String> response = restTemplate.getForEntity("/readings/read/" + meterId, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("/readings/read/" + smartMeterId, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
-    private void populateMeterReadingsForMeter(String meterId) throws JsonProcessingException {
-        MeterReadings readings = new MeterReadingsBuilder().setSmartMeterId(meterId)
+    private void populateMeterReadingsForMeter(String smartMeterId) throws JsonProcessingException {
+        MeterReadings readings = new MeterReadingsBuilder().setSmartMeterId(smartMeterId)
                     .generateElectricityReadings(20)
                     .build();
 

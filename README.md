@@ -1,4 +1,50 @@
-# JOI Energy
+# Welcome to PowerDale
+
+PowerDale is a small town with around 100 residents. Most houses have a smartmeter installed that can save and send information
+about how much energy a house has used.
+
+There are three major providers of energy in town that charge different amounts for the power they supply.
+
+_Dr Evil's Dark Energy_
+_The Green Eco_
+_Power for Everyone_
+
+# Introducing JOI Energy
+
+JOI Energy is a new startup in the energy industry.
+Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smartmeters and
+recommending the best suppler to meet their needs.
+
+You have been placed into their development team, whose current goal is to produce an API whereby their customers and smart meters will interact with.
+
+Unfortunately, two of the team are on annual leave, and another has called in sick!
+You are left with a ThoughtWorker to progress with the current user stories on the story wall. This is your chance to make an impact on the business, improve the code base and deliver value.
+
+##Story Wall
+
+At JOI energy the development team use a story wall or kanban board to keep track of features or "stories" as they are worked on.
+
+The wall you will be working from today has 7 columns:
+
+Backlog
+Ready for Dev
+In Dev
+Ready for Testing
+In Testing
+Ready for sign off
+Done
+
+Examples can be found here https://leankit.com/learn/kanban/kanban-board/
+
+##Users
+
+To trial the new JOI software 5 people from the JOI accounts team have agreed to test the service and share their energy data.
+
+Sarah - Meter Id: "meter-0", current power supplier: Dr Evil's Dark Energy.
+Peter - Meter Id: "meter-1", current power supplier: The Green Eco.
+Charlie - Meter Id: "meter-2", current power supplier: Dr Evil's Dark Energy.
+Andrea - Meter Id: "meter-3", current power supplier: Power for Everyone.
+Alex - Meter Id: "meter-4", current power supplier: The Green Eco.
 
 ## Overview
 

@@ -5,12 +5,12 @@ import java.util.List;
 public class MeterReadings {
 
     private List<ElectricityReading> electricityReadings;
-    private String meterId;
+    private String smartMeterId;
 
     public MeterReadings() { }
 
-    public MeterReadings(String meterId, List<ElectricityReading> electricityReadings) {
-        this.meterId = meterId;
+    public MeterReadings(String smartMeterId, List<ElectricityReading> electricityReadings) {
+        this.smartMeterId = smartMeterId;
         this.electricityReadings = electricityReadings;
     }
 
@@ -18,7 +18,7 @@ public class MeterReadings {
         return electricityReadings;
     }
 
-    public String getMeterId() {
-        return meterId;
+    public String getSmartMeterId() {
+        return smartMeterId;
     }
 }

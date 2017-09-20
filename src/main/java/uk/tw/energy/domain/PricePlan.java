@@ -6,16 +6,26 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public class Tariff {
+public class PricePlan {
 
-    private final String name;
+    private final String energySupplier;
+    private final String planName;
     private final BigDecimal unitRate; // unit price per kWh
     private List<PeakTimeMultiplier> peakTimeMultipliers;
 
-    public Tariff(String name, BigDecimal unitRate, List<PeakTimeMultiplier> peakTimeMultipliers) {
-        this.name = name;
+    public PricePlan(String planName, String energySupplier, BigDecimal unitRate, List<PeakTimeMultiplier> peakTimeMultipliers) {
+        this.planName = planName;
+        this.energySupplier = energySupplier;
         this.unitRate = unitRate;
         this.peakTimeMultipliers = peakTimeMultipliers;
+    }
+
+    public String getEnergySupplier() {
+        return energySupplier;
+    }
+
+    public String getPlanName() {
+        return planName;
     }
 
     public BigDecimal getUnitRate(){
@@ -24,13 +34,10 @@ public class Tariff {
 
     public BigDecimal getPrice(LocalDateTime dateTime) {
         Optional<PeakTimeMultiplier> peakTimeMultiplier = peakTimeMultipliers.stream()
-                .filter(tariff -> tariff.dayOfWeek.equals(dateTime.getDayOfWeek())).findFirst();
-        return peakTimeMultiplier.map(tariff -> unitRate.multiply(tariff.multiplier)).orElse(unitRate);
+                .filter(multiplier -> multiplier.dayOfWeek.equals(dateTime.getDayOfWeek())).findFirst();
+        return peakTimeMultiplier.map(multiplier -> unitRate.multiply(multiplier.multiplier)).orElse(unitRate);
     }
 
-    public String getName() {
-        return name;
-    }
 
     static class PeakTimeMultiplier {
 

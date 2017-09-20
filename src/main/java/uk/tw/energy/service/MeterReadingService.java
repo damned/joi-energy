@@ -17,14 +17,14 @@ public class MeterReadingService {
         this.meterAssociatedReadings = meterAssociatedReadings;
     }
 
-    public Optional<List<ElectricityReading>> getReadings(String meterId) {
-        return Optional.ofNullable(meterAssociatedReadings.get(meterId));
+    public Optional<List<ElectricityReading>> getReadings(String smartMeterId) {
+        return Optional.ofNullable(meterAssociatedReadings.get(smartMeterId));
     }
 
-    public void storeReadings(String meterId, List<ElectricityReading> electricityReadings) {
-        if ( !meterAssociatedReadings.containsKey(meterId) ) {
-            meterAssociatedReadings.put(meterId, new ArrayList<>());
+    public void storeReadings(String smartMeterId, List<ElectricityReading> electricityReadings) {
+        if ( !meterAssociatedReadings.containsKey(smartMeterId) ) {
+            meterAssociatedReadings.put(smartMeterId, new ArrayList<>());
         }
-        meterAssociatedReadings.get(meterId).addAll(electricityReadings);
+        meterAssociatedReadings.get(smartMeterId).addAll(electricityReadings);
     }
 }

@@ -32,7 +32,7 @@ public class EndpointTest {
         String meterId = "bob";
         populateMeterReadingsForMeter(meterId);
 
-        ResponseEntity<String> response = restTemplate.getForEntity("/tariffs/compare-all/" + meterId, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("/price-plans/compare-all/" + meterId, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -58,7 +58,7 @@ public class EndpointTest {
     }
 
     private void populateMeterReadingsForMeter(String meterId) throws JsonProcessingException {
-        MeterReadings readings = new MeterReadingsBuilder().setMeterId(meterId)
+        MeterReadings readings = new MeterReadingsBuilder().setSmartMeterId(meterId)
                     .generateElectricityReadings(20)
                     .build();
 

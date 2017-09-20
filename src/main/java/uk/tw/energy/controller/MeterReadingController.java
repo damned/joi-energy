@@ -21,13 +21,13 @@ public class MeterReadingController {
 
     @PostMapping("/store")
     public ResponseEntity storeReadings(@RequestBody MeterReadings meterReadings) {
-        meterReadingService.storeReadings(meterReadings.getMeterId(), meterReadings.getElectricityReadings());
+        meterReadingService.storeReadings(meterReadings.getSmartMeterId(), meterReadings.getElectricityReadings());
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/read/{meterId}")
-    public ResponseEntity readReadings(@PathVariable String meterId) {
-        Optional<List<ElectricityReading>> readings = meterReadingService.getReadings(meterId);
+    @GetMapping("/read/{smartMeterId}")
+    public ResponseEntity readReadings(@PathVariable String smartMeterId) {
+        Optional<List<ElectricityReading>> readings = meterReadingService.getReadings(smartMeterId);
         return readings.isPresent()
                 ? ResponseEntity.ok(readings.get())
                 : ResponseEntity.notFound().build();

@@ -11,11 +11,11 @@ public class MeterReadingsBuilder {
 
     private static final String DEFAULT_METER_ID = "id";
 
-    private String meterId = DEFAULT_METER_ID;
+    private String smartMeterId = DEFAULT_METER_ID;
     private List<ElectricityReading> electricityReadings = new ArrayList<>();
 
-    public MeterReadingsBuilder setMeterId(String meterId) {
-        this.meterId = meterId;
+    public MeterReadingsBuilder setSmartMeterId(String smartMeterId) {
+        this.smartMeterId = smartMeterId;
         return this;
     }
 
@@ -30,6 +30,6 @@ public class MeterReadingsBuilder {
     }
 
     public MeterReadings build() {
-        return new MeterReadings(meterId, electricityReadings);
+        return new MeterReadings(smartMeterId, electricityReadings);
     }
 }

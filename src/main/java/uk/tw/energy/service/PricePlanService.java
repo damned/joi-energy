@@ -3,7 +3,7 @@ package uk.tw.energy.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.tw.energy.domain.ElectricityReading;
-import uk.tw.energy.domain.Tariff;
+import uk.tw.energy.domain.PricePlan;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,28 +16,28 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class TariffService {
+public class PricePlanService {
 
     @Autowired
-    private final List<Tariff> tariffs;
+    private final List<PricePlan> pricePlans;
     private MeterReadingService meterReadingService;
 
-    public TariffService(List<Tariff> tariffs, MeterReadingService meterReadingService) {
-        this.tariffs = tariffs;
+    public PricePlanService(List<PricePlan> pricePlans, MeterReadingService meterReadingService) {
+        this.pricePlans = pricePlans;
         this.meterReadingService = meterReadingService;
     }
 
-    public Optional<Map<String, BigDecimal>> getConsumptionCostOfElectricityReadingsForEachTariff(String meterId) {
-        Optional<List<ElectricityReading>> electricityReadings = meterReadingService.getReadings(meterId);
+    public Optional<Map<String, BigDecimal>> getConsumptionCostOfElectricityReadingsForEachPricePlan(String smartMeterId) {
+        Optional<List<ElectricityReading>> electricityReadings = meterReadingService.getReadings(smartMeterId);
 
         if ( !electricityReadings.isPresent() ) {
             return Optional.empty();
         }
 
-        return Optional.of(tariffs.stream().collect(Collectors.toMap(Tariff::getName, t -> calculateCost(electricityReadings.get(), t))));
+        return Optional.of(pricePlans.stream().collect(Collectors.toMap(PricePlan::getPlanName, t -> calculateCost(electricityReadings.get(), t))));
     }
 
-    private BigDecimal calculateCost(List<ElectricityReading> electricityReadings, Tariff tariff) {
+    private BigDecimal calculateCost(List<ElectricityReading> electricityReadings, PricePlan pricePlan) {
         BigDecimal averageReading = electricityReadings.stream()
                 .map(ElectricityReading::getReading)
                 .reduce(BigDecimal.ZERO, (reading, accumulator) -> reading.add(accumulator))
@@ -52,7 +52,7 @@ public class TariffService {
                 .getTime();
         BigDecimal timeElapsed = BigDecimal.valueOf(Duration.between(firstReadingTime, lastReadingTime).getSeconds() / 3600.0);
         BigDecimal averagedCost = averageReading.divide(timeElapsed, RoundingMode.HALF_UP);
-        return averagedCost.multiply(tariff.getUnitRate());
+        return averagedCost.multiply(pricePlan.getUnitRate());
     }
     
 }

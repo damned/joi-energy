@@ -3,7 +3,7 @@
 ## Overview
 
 JOI Energy is a new energy company that uses data to ensure customers are 
-able to be on the best tariff for their energy consumption.
+able to be on the best pricePlan for their energy consumption.
 
 ## API
 
@@ -22,7 +22,7 @@ POST
 
 ```json
 {
-    "meterId": <meterId>,
+    "smartMeterId": <smartMeterId>,
     "electricityReadings": [
         { "time": <timestamp>, "reading": <reading> },
         ...
@@ -31,7 +31,7 @@ POST
 ```
 
 `timestamp`: Unix timestamp, e.g. `1504777098`   
-`reading`: kW reading of meter at that time, e.g. `0.0503`
+`reading`: kW reading of smart meter at that time, e.g. `0.0503`
 
 ### Get Stored Readings
 
@@ -39,10 +39,10 @@ POST
 
 ```
 GET
-/readings/read/<meterId>
+/readings/read/<smartMeterId>
 ```
 
-`meterId`: A string value, e.g. `meter-0`
+`smartMeterId`: A string value, e.g. `smart-meter-0`
 
 #### Output
 
@@ -53,22 +53,22 @@ GET
 ]
 ```
 
-### Calculate Usage Cost of Meter against all Tariffs
+### Calculate Usage Cost of Smart Meter against all Price Plans
 
 #### Endpoint
 
 ```
 GET
-/tariffs/compare-all/<meterId>
+/pricePlans/compare-all/<smartMeterId>
 ```
 
-`meterId`: A string value, e.g. `meter-0`
+`smartMeterId`: A string value, e.g. `smart-meter-0`
 
 #### Output
 
 ```json
 {
-    "tariff-0": 21.78133785680731809,
+    "pricePlan-0": 21.78133785680731809,
     ...
 }
 ```

@@ -6,9 +6,7 @@ about how much energy a house has used.
 There are three major providers of energy in town that charge different amounts for the power they supply.
 
 - _Dr Evil's Dark Energy_
-
 - _The Green Eco_
-
 - _Power for Everyone_
 
 # Introducing JOI Energy
@@ -42,11 +40,11 @@ Examples can be found here https://leankit.com/learn/kanban/kanban-board/
 
 To trial the new JOI software 5 people from the JOI accounts team have agreed to test the service and share their energy data.
 
-Sarah - Smart Meter Id: "smart-meter-0", current power supplier: Dr Evil's Dark Energy.
-Peter - Smart Meter Id: "smart-meter-1", current power supplier: The Green Eco.
-Charlie - Smart Meter Id: "smart-meter-2", current power supplier: Dr Evil's Dark Energy.
-Andrea - Smart Meter Id: "smart-meter-3", current power supplier: Power for Everyone.
-Alex - Smart Meter Id: "smart-meter-4", current power supplier: The Green Eco.
+- Sarah - Smart Meter Id: "smart-meter-0", current power supplier: Dr Evil's Dark Energy.
+- Peter - Smart Meter Id: "smart-meter-1", current power supplier: The Green Eco.
+- Charlie - Smart Meter Id: "smart-meter-2", current power supplier: Dr Evil's Dark Energy.
+- Andrea - Smart Meter Id: "smart-meter-3", current power supplier: Power for Everyone.
+- Alex - Smart Meter Id: "smart-meter-4", current power supplier: The Green Eco.
 
 ## Overview
 

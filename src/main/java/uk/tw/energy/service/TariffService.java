@@ -54,4 +54,5 @@ public class TariffService {
         BigDecimal averagedCost = averageReading.divide(timeElapsed, RoundingMode.HALF_UP);
         return averagedCost.multiply(tariff.getUnitRate());
     }
+    
 }

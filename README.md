@@ -12,7 +12,7 @@ There are three major providers of energy in town that charge different amounts 
 # Introducing JOI Energy
 
 JOI Energy is a new startup in the energy industry.
-Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smartmeters and
+Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smart meters and
 recommending the best suppler to meet their needs.
 
 You have been placed into their development team, whose current goal is to produce an API whereby their customers and smart meters will interact with.
@@ -49,7 +49,7 @@ To trial the new JOI software 5 people from the JOI accounts team have agreed to
 ## Overview
 
 JOI Energy is a new energy company that uses data to ensure customers are 
-able to be on the best pricePlan for their energy consumption.
+able to be on the best price plan for their energy consumption.
 
 ## API
 
